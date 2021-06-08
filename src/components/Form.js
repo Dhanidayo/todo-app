@@ -16,9 +16,10 @@ class Form extends React.Component{
         this.handleInput = this.handleInput.bind(this);
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.editItem = this.editItem.bind(this);
     }
 
-    //function to handle the text entered in the input field and store it in a variable object
+    //function to handle the text entered in the input field and store it in an object variable
     handleInput(e){
         this.setState({
             currentItem:{
@@ -28,7 +29,7 @@ class Form extends React.Component{
         })
     }
 
-    //items in variable object is added to a list of array
+    //items in object variable is then added to a list of array
     addItem(e) {
         e.preventDefault();
         const newItem = this.state.currentItem;
@@ -46,11 +47,24 @@ class Form extends React.Component{
             })
         }
     }
+    //function to delete item fromthe list
     deleteItem(key) {
         //filter all items and store them in the filteredItems variable
         const filteredItems = this.state.items.filter(item => item.key !== key);
         this.setState({
             items:filteredItems
+        })
+    }
+    //function to make the inputted list editable
+    editItem(text, key) {
+        const items  = this.state.items;
+        items.map(item => {
+            if (item.key === key) {
+                item.text = text       
+            }
+        })
+        this.setState({ //update the test to the new edit
+            items: items
         })
     }
     render(){
@@ -61,13 +75,13 @@ class Form extends React.Component{
                     <input 
                         type="text" 
                         className="myForm" 
-                        placeholder="Enter what you plan to do here..." 
+                        placeholder="Write your plans here..." 
                         value={this.state.currentItem.text} //link input field to the current item
                         onChange={this.handleInput} //handle input such that it is stored i
                     />
                     <button className="add-btn">Add</button>
                 </form>
-                <Todo items={this.state.items} deleteItem={this.deleteItem}>
+                <Todo items={this.state.items} deleteItem={this.deleteItem} editItem={this.editItem}>
                 </Todo>
             </div>
         ); 
