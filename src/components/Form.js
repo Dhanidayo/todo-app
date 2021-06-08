@@ -57,11 +57,11 @@ class Form extends React.Component{
     }
     //function to make the inputted list editable
     editItem(text, key) {
-        const items  = this.state.items;
-        items.map(item => {
+        const items  = this.state.items.map(item => {
             if (item.key === key) {
                 item.text = text       
             }
+            return item;
         })
         this.setState({ //update the test to the new edit
             items: items
