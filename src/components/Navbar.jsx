@@ -14,24 +14,25 @@ function Navbar() {
         context.dispatch({
             type: 'LOGOUT',
         })
-        history.push('/Home');
+        history.push('/Login');
     }
 
     return (
         <nav className={styles.navbar}>
-            <Link className={styles.navlink} to='/Home'>Home</Link>
             {context.state.isLoggedIn ? (
                 <>
-                    <Link className={styles.navlink}  to='/TodoList'>My Todo</Link>
+                    <Link className={styles.navlink} to='/Home'>Home</Link>
                     <br />
-                    <span className={styles.navlink} onClick={logout}>Logout</span>          
-                </>
-            ) : (
-                <>
                     <Link className={styles.navlink} to='/Login'>Login</Link>
                     <br />
                     <Link className={styles.navlink} to='/Register'>Register</Link>
-                    <br /> 
+                    <br />           
+                </>
+            ) : (
+                <>
+                    <Link className={styles.navlink}  to='/TodoList'>My Todo</Link>
+                    <br />
+                    <span className={styles.navlink} onClick={logout}>Logout</span>
                 </>
             )}
         </nav>

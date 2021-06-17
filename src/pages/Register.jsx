@@ -40,7 +40,7 @@ function Register() {
                     payload : result.body,
                 });
 
-                history.push('/Home');
+                history.push('/TodoList');
 
              })
             .catch(err => {

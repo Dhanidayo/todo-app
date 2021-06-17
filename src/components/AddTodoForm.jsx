@@ -13,7 +13,8 @@ function AddTodoForm() {
 
         const newTodo = {
             item: todoInput,
-            id: Date.now(),
+            id: Date.now(), 
+            isComplete : false
         };
 
         context.dispatch({

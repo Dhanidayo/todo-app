@@ -1,10 +1,4 @@
-import { useHistory } from 'react-router-dom';
-
 function Home() {
-
-    const history = useHistory();
-
-    history.push('/Home');
 
     return (
             <div className="bannerText">

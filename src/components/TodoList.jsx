@@ -3,26 +3,39 @@ import { useContext, useState } from 'react';
 import TodoListItem from './TodoListItem';
 
 
-function TodoList(props) {
+function TodoList() {
 	const context = useContext(AppContext);
 	console.log(context);
 
-  const [ setTodoInput ] = useState();
+  const [list, setList] = useState();
 
-  const deleteTodo = (key) => {
-    setTodoInput((prevTodos) => {
-        return prevTodos.filter(todoItem => todoItem.key !== key );
+  const deleteTodo = (id) => {
+    const newList = list.filter((todoItem) => todoItem.id !== id);
+    setList(newList);
+  }
+
+  const editTodo = (id) => {
+    const newList = list.map((todoItem) => {
+      if (todoItem.id === id) {
+        const updatedItem = {
+          ...todoItem,
+        };
+        return updatedItem;
+      }
+      return todoItem;
     });
-}
-
+    setList(newList);
+  }
+  
     return (
       <ul>
-        {context.state.todoList.map(function (todoItem) {
+        {context.state.todoList.map((todoItem) => {
           return (
             <TodoListItem
               key={todoItem.id}
-              todo={todoItem}
+              todoItem={todoItem}
               deleteTodo={deleteTodo}
+              editTodo={editTodo}
             />
           );
         })}

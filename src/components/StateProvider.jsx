@@ -30,7 +30,7 @@ function reducer(state, action) {
 const initialState = {
     todoList: [],
     isLoggedIn: false,
-    action: '',
+    userData: null,
 };
 
 function StateProvider({ children }) { 

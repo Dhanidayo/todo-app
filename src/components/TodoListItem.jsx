@@ -1,10 +1,10 @@
-function TodoListItem({ todo }) {
+function TodoListItem({ todoItem, deleteTodo, editTodo }) {
 
     return (
         <li className="card">
-            <h2 className="todo-card-heading">{todo.item}</h2>
-            <button className=" edit btn">Edit</button>
-            <button className="del btn">Delete</button>
+            <h2 className="todo-card-heading">{todoItem.item}</h2>
+            <button className=" edit btn"onClick={editTodo}>Edit</button>
+            <button className="del btn" onClick={deleteTodo}>Delete</button>
         </li>
     );
 }
