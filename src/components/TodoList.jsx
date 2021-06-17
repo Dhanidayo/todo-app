@@ -1,11 +1,19 @@
 import { AppContext } from './StateProvider';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import TodoListItem from './TodoListItem';
 
 
-function TodoList() {
+function TodoList(props) {
 	const context = useContext(AppContext);
 	console.log(context);
+
+  const [ setTodoInput ] = useState();
+
+  const deleteTodo = (key) => {
+    setTodoInput((prevTodos) => {
+        return prevTodos.filter(todoItem => todoItem.key !== key );
+    });
+}
 
     return (
       <ul>
@@ -14,6 +22,7 @@ function TodoList() {
             <TodoListItem
               key={todoItem.id}
               todo={todoItem}
+              deleteTodo={deleteTodo}
             />
           );
         })}
