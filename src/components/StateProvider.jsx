@@ -21,7 +21,7 @@ function reducer(state, action) {
     }
     //if a user is logged out, set isLoggedin to false and userData to null
     if (action.type === 'LOGOUT') {
-        stateCopy.isLoggedIn = true;
+        stateCopy.isLoggedIn = false;
         stateCopy.userData = null;
     }
     return stateCopy;
