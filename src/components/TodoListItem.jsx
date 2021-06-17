@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-function TodoListItem({ todo, key }) {
-    const [ SetTodoInput ] = useState();
+function TodoListItem({ todo }) {
+    const [ setTodoInput ] = useState('');
 
     const deleteHandler = (key) => {
-        SetTodoInput((prevTodos) => {
+        setTodoInput((prevTodos) => {
             return prevTodos.filter(todoItem => todoItem.key !== key );
         });
     }

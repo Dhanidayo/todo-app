@@ -3,6 +3,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
+import FourOFour from './pages/FourOFour';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import StateProvider from './components/StateProvider';
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path='/TodoList'>
             <Planner />
+          </Route>
+          <Route path='/FourOFour'>
+            <FourOFour />
           </Route>
         </Switch>
 

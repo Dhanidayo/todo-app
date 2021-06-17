@@ -10,8 +10,19 @@ function reducer(state, action) {
     //set the name on stateCopy to action
     stateCopy.action = action;
 
+    //if a user clicks on ADD TODO, the todo item should be added to the todoList array
     if (action.type === 'ADD_TODO') {
         stateCopy.todoList.unshift(action.payload);
+    }
+    //if a user is logged in, set login to true and userData to payload
+    if (action.type === 'LOGIN') {
+        stateCopy.isLoggedIn =  true;
+        stateCopy.userData = action.payload;
+    }
+    //if a user is logged out, set isLoggedin to false and userData to null
+    if (action.type === 'LOGOUT') {
+        stateCopy.isLoggedIn = true;
+        stateCopy.userData = null;
     }
     return stateCopy;
 }
@@ -43,159 +54,3 @@ export default StateProvider;
 //reducer function - this is the fuction used to set state in useReducer
 //the reducer function always takes in state and action
 //the dispatch when called calls the reducer function which has the state and action
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const [state, dispatch] = useReducer(reducer, initialState);
-// const { dispatch } = useContext(AppContext);
-
-// function reducer(state, action) {
-//     if (action.type === 'ADD_TODO') {
-//         return {
-//             ...state,
-//             todos: [action.payload, ...state.todos],
-//         };
-//     }
-//     if (action.type === 'SET_TODOS') {
-//         return {
-//             ...state,
-//             todos: action.payload,
-//         };
-//     }
-//     if (action.type === 'LOGIN') {
-//         return {
-//             ...state,
-//             isLoggedIn: true,
-//             ...action.payload,
-//         }
-//     }
-//     if (action.type === 'LOGOUT') {
-//         return {
-//             ...state,
-//             isLoggedIn: false,
-//             userEmail: null,
-//             userId: null,
-//         };
-//     }
-//     return state;
-// }
-
-// useEffect(() => {
-//     fetch('https://jsonplaceholder.typicode.com/posts')
-//         .then(res => res.json())
-//         .then(result => dispatch({ type: 'SET_POSTS', payload: result }));
-// }, []);
-
-// export default StateProvider;
-
-
-//import { createContext, useEffect, useState } from 'react';
-// import getFirebase from '../firebase';
-
-// export const AppContext = createContext();
-
-// const initialState = {
-//     isLoggedIn: false,
-//     userId: null,
-//     userEmail: null,
-//     items: [],
-// };
-
-// function StateProvider({children}) {
-//     //Create a currentUser state
-//     const [currentUser, setCurrentUser] = useState(initialState);
-
-//     // Listen to onAuthStateChanged
-//     useEffect(() => {
-//     const firebase = getFirebase();
-
-//     if (firebase) {
-//       firebase.auth().onAuthStateChanged((currentUser) => {
-//         if (currentUser) {
-//           setCurrentUser(currentUser.email);
-//         } else {
-//           setCurrentUser(null);
-//         }
-//       });
-//     }
-//     }, []);
-
-//     return (
-//         <AppContext.Provider value={{state: currentUser, setState: setCurrentUser}}>
-//             {children}
-//         </AppContext.Provider>
-//     );
-// }
