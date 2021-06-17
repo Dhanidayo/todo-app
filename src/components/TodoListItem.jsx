@@ -12,8 +12,10 @@ function TodoListItem({ todoItem, deleteTodo, editTodo }) {
                     }} 
                 />
             </h2>
-            <button className=" edit btn"onClick={editTodo}>Edit</button>
-            <button className="del btn" onClick={deleteTodo}>Delete</button>
+            <div className="btn-box">
+                <button className=" edit btn"onClick={editTodo}>Edit</button>
+                <button className="del btn" onClick={deleteTodo}>Delete</button>
+            </div>
         </li>
     );
 }

@@ -78,7 +78,7 @@ function Login() {
 			</div>
 			<br />
 			<div>
-				<button className='btn' type='submit'>
+				<button className='edit btn' type='submit'>
 					Login
 				</button>
 			</div>

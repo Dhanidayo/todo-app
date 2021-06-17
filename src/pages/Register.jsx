@@ -94,7 +94,7 @@ function Register() {
             </div>
             <br />
             <div>
-                <button type="submit" className="btn">Register</button>
+                <button type="submit" className="edit btn">Register</button>
             </div>
         </form>
     );   

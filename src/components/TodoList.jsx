@@ -28,18 +28,20 @@ function TodoList() {
   }
   
     return (
-      <ul>
-        {context.state.todoList.map((todoItem) => {
-          return (
-            <TodoListItem
-              key={todoItem.id}
-              todoItem={todoItem}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-            />
-          );
-        })}
-      </ul>
+      <div className="card-container">
+          <ul>
+            {context.state.todoList.map((todoItem) => {
+              return (
+                <TodoListItem
+                  key={todoItem.id}
+                  todoItem={todoItem}
+                  deleteTodo={deleteTodo}
+                  editTodo={editTodo}
+                />
+              );
+            })}
+          </ul>
+      </div>
     );
 }
 

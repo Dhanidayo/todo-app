@@ -20,8 +20,10 @@ code {
 body {
   font-family: sans-serif;
   margin: 3rem;
-  background-color: #dfdfdf;
+  background-color: #800040;
 }
+
+/* ==========CONTAINER STYLES=========== */
 
 .main-container {
   width: 50%;
@@ -33,11 +35,6 @@ body {
   background-color: #ddd;
 }
 
-.card-container {
-  height: 100%;
-  border: 1px solid #800040;
-}
-
 .form-container {
   background-color: #800040;
   color: #fff;
@@ -46,7 +43,21 @@ body {
   max-width: 700px;
 }
 
-.main-heading {
+.card {
+  max-width: 600px;
+  height: 100px;
+  margin: 22px auto;
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px 3px #9c1458;
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===========INPUT AND HEADING STYLES================ */
+
+.main-heading, .redhead {
   text-align: center;
   color: #aaa;
   padding-top: 10px;
@@ -78,13 +89,9 @@ h1, h2 {
   box-shadow: 2px 2px 3px 3px #aaa;
 }
 
-.bannerText p {
+.bannerText p, label {
   font-style: italic;
-}
-
-
-label {
-  font-style: italic;
+  color: #aaa;
 }
 
 .form {
@@ -111,7 +118,6 @@ input:focus {
   padding: 20px;
 }
 
-
 .todo-card-heading input {
   width: 450px;
   margin-top: -20px;
@@ -119,17 +125,7 @@ input:focus {
   font-weight: bold;
 }
 
-.card {
-  max-width: 600px;
-  height: 100px;
-  margin: 40px auto;
-  border-radius: 10px;
-  box-shadow: 2px 3px 5px -3px grey;
-  background-color: white;
-
-  display: flex;
-  flex-direction: column;
-}
+/* ==========BUTTON STYLES=========== */
 
 .btn {
   padding: 0.5rem 1.5rem;
@@ -137,19 +133,21 @@ input:focus {
   border-radius: 4px;
   background-color: #800040;
   color: white;
-  border: 1.5px solid #800040;
+  border: none;
   font-weight: normal;
   font-size: 16px;
-  margin: -55px 20px -20px 0px;
-  position: relative;
+}
 
-  align-self: flex-end;
-  justify-content: space-around;
+.btn-box {
+  width: max-content;
+  display: flex;
+  margin: -82px 400px;
 }
 
 .edit {
   background-color: #aaa;
   color: #800040;
+  margin-right: 8px;
 }
 
 .edit:hover {
@@ -157,7 +155,7 @@ input:focus {
   color: #fff;
 }
 
-.btn:hover{
+.del:hover{
   background-color: #9c1458;
   border: none;
 }
