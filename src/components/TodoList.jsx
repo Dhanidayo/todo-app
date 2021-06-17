@@ -14,11 +14,11 @@ function TodoList() {
     setList(newList);
   }
 
-  const editTodo = (id) => {
+  const editTodo = (item, id) => {
     const newList = list.map((todoItem) => {
       if (todoItem.id === id) {
         const updatedItem = {
-          ...todoItem,
+          ...todoItem.item = item,
         };
         return updatedItem;
       }
