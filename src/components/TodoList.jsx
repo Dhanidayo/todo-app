@@ -1,32 +1,29 @@
 import { AppContext } from './StateProvider';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import TodoListItem from './TodoListItem';
 
 
 function TodoList() {
 	const context = useContext(AppContext);
-	console.log(context);
+	///console.log(context);
 
-  const [list, setList] = useState();
+  //fetching user's todolist from the API
+  fetch(`https://user-manager-three.vercel.app/api/todo?userId=${context.state.userId}`)
+    .then(res => res.json())
+    .then(result => {
+           if (result.error === false) {
+             console.log(result);
+             //call the dispatch to dispatch the body(content) of the result
+             context.dispatch({
+               type: 'SET_TODO', 
+               payload: result.body,
+             });
+           }
+          })
+           .catch(err => {
+             console.log('this error occured', err);
+           })
 
-  const deleteTodo = (id) => {
-    const newList = list.filter((todoItem) => todoItem.id !== id);
-    setList(newList);
-  }
-
-  const editTodo = (item, id) => {
-    const newList = list.map((todoItem) => {
-      if (todoItem.id === id) {
-        const updatedItem = {
-          ...todoItem.item = item,
-        };
-        return updatedItem;
-      }
-      return todoItem;
-    });
-    setList(newList);
-  }
-  
     return (
       <div className="card-container">
           <ul>
@@ -34,9 +31,7 @@ function TodoList() {
               return (
                 <TodoListItem
                   key={todoItem.id}
-                  todoItem={todoItem}
-                  deleteTodo={deleteTodo}
-                  editTodo={editTodo}
+                  item={todoItem}
                 />
               );
             })}

@@ -6,11 +6,12 @@ import { useHistory } from 'react-router-dom';
 
 function Login() {
 	const context = useContext(AppContext);
-	console.log(context);
+	//console.log(context);
 
 	const { register, handleSubmit } = useForm();
 	const history = useHistory();
 
+	//function to login a user
 	const loginUser = ({ email, password }) => {
 		// create data to be sent to the API for validation
 		let userData = {
@@ -31,9 +32,9 @@ function Login() {
 			.then(res => res.json())
 			.then(result => {
 				if (result.error === true) {
-					return alert(result.message);
+					console.log(result);
+					//return alert(result.message);
 				}
-
 				context.dispatch({
 					type: 'LOGIN',
 					payload: result.body,
@@ -88,3 +89,16 @@ function Login() {
 
 export default Login;
 
+
+
+
+
+
+
+
+// useEffect(() => {
+// 	//If a user is logged in, navigate away from current page to TodoList page
+// 	if (context.state.isLoggedIn) {
+// 		history.push('/TodoList');
+// 	}
+// }, [context.state, history]);

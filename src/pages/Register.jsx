@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { AppContext } from '../components/StateProvider';
 import { useHistory } from 'react-router-dom';
 
@@ -7,6 +7,13 @@ function Register() {
     const { register, handleSubmit } = useForm();
     const context = useContext(AppContext);
     const history = useHistory();
+
+    useEffect(() => {
+        //If a user is logged in, navigate away from current page to TodoList page
+        if (context.state.isLoggedIn) {
+            history.push('/TodoList');
+        }
+    }, [context.state, history]);
 
     const registerUser = ({ email, password, confirmPassword }) => {
         //check if passwords match
@@ -32,7 +39,7 @@ function Register() {
             .then(res => res.json())
             .then(result => {
                 if (result.error === true) {
-                    return alert(result.message);
+                    console.log(result);
                 }
 
                 context.dispatch({

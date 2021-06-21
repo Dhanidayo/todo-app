@@ -7,22 +7,21 @@ import Home from './pages/Home';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import StateProvider from './components/StateProvider';
-import { AppContext } from './components/StateProvider';
-import { useContext, useEffect } from 'react';
+// import { AppContext } from './components/StateProvider';
+// import { useContext, useEffect } from 'react';
 
 
 
 function App() {
-  const context = useContext(AppContext);
-  console.log(context);
+  // const context = useContext(AppContext);
+  // console.log(context);
 
-  useEffect(() => {}, []);
+  // useEffect(() => {}, []);
 
   return (
     <BrowserRouter>
       <StateProvider>
         <Navbar />
-
         <Switch>
           <Route path='/Login'>
             <Login />
@@ -33,14 +32,13 @@ function App() {
           <Route path='/Home'>
             <Home />
           </Route>
-          <Route path='/TodoList'>
+          <Route exact path='/TodoList'>
             <Planner />
           </Route>
-          <Route path='/'>
+          <Route>
             <Home />
           </Route>
         </Switch>
-
       </StateProvider>  
     </BrowserRouter>
   );
